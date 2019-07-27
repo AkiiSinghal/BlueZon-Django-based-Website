@@ -30,11 +30,11 @@ It also gives the feature of email verification of users.
 * To activate email verification like features edit .[setting.py](https://github.com/AkiiSinghal/BlueZon-Django-based-Website/blob/master/BlueZon/gamers/settings.py)
   - Change the email id and password in 129 and 130 line respectively.
   
-# Hosting
+## Hosting
 To host this website on the platform like AWS refer to the below link
 * .[AWS Hosting](https://youtu.be/OLS0XD6oINA)
 
-# ScreenShots
+## ScreenShots
 ![Screenshot (37)](https://user-images.githubusercontent.com/42001728/61988375-fe73b400-b03d-11e9-8f9c-fa821717245b.png)
 ![Screenshot (38)](https://user-images.githubusercontent.com/42001728/61988372-fddb1d80-b03d-11e9-8f33-4367fdcea34e.png)
 ![Screenshot (36)](https://user-images.githubusercontent.com/42001728/61988374-fe73b400-b03d-11e9-966b-78efe81aefbc.png)
