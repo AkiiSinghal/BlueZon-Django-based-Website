@@ -1,0 +1,73 @@
+{% extends 'game/base.html' %}
+{% load static %}
+{% block content %}
+<div class="detail" style="margin-left: auto; margin-right: auto">
+    <h2 style="color: #2D98C7;">{{ detail.name }} - Match #{{ detail.id }}</h2>
+                <button>Type: {{ detail.type }}</button>
+                <button>Version: {{ detail.version }}</button>
+                <button>Map: {{ detail.map }}</button>
+                <button>Entry fee: Rs.{{ detail.fees }}</button>
+                <button>Match Type: Paid</button>
+                <button>Match Schedule: {{ detail.date }} at {{ detail.time }}</button>
+                <h2 style="color: #2D98C7;">Prize Details</h2>
+                <button>Winning Prize: Rs.{{ detail.prize }}</button>
+                <button>Per Kill: Rs.{{ detail.kills }}</button>
+                <h2 style="color: #2D98C7;">About this Match</h2>
+                <ul style="color: black;">
+                    <li>If match is cancelled due to less than min. no of participants,than we'll refund the entry fees.</li>
+                    <li>Please enter your PAYTM number,as payouts are done through that number only.</li>
+                    <li>Room ID and Password will be shared <b><i>through email to the email id provided by you at the time of registration before 15 minutes of match start time.</b></i></li>
+                    <li>Match will start after 15 minutes of Sharing Room ID and Password.</li>
+                    <li>Make sure to grab ID and Password before the Match Start Time.</li>
+                    <li>Make sure to fix your position in the Match Room ASAP, before the matchstarts.</li>
+                    <li>If in any case you fail to join the room by the match start time then we aren't responsible for it. <b><i>Refund in such cases won't be processed.</i></b> So make sure to join on time.</li>
+                    <li><i>Do not share the Room ID and Password with anyone who has not paid for the match.</i> If you are found doing so, your account may get terminated permanently and all the winnings will be lost.</li>
+                    <li>Griefing and Teaming is against the game rules. Any participant found doing so will be disqualified and all their winning might be lost.</li>
+                    <li>All matches are paid. To participate, you need to pay the entry fee amount.</li> 
+                    <li>There are total 100 spots available and the entry is done on first come first serve basis.</li>
+                    <li>Please note that the listed entry fee is per individual and not the squad/duo team.</li>
+                    <li>Each member of a team (Squad or Duo) has to pay the entry fee and register individually for the match or tournament.</li>
+                    <li>Once you join the match custom room, do not keep changing you position. If you do so, you may get kicked from the room.</li>
+                    <li>Spots are given on the First Come First Basis.</li>
+                    <li>The player who will get CHICKEN DINNER!!! will receive the winner prize.</li>
+                    <li>You will also awarded for each kill. Check the reward details above.</li>
+                    <li>Your award will be credited to your PAYTM account within 5 hrs of match completion.</li>
+                    <li>Use only Mobile Device to Join Match. Do not use any Hacks or Emulators.</li>
+                    <li>If anyone found violating these rules then immediate action will be taken and respective accounts may get banned and rewards may be abandoned.</li>
+                    <li>If you have any queries then reach us at contact.bluezon@gmail.com</li>
+                </ul>
+                <button onclick="part()" id="button"><i class="fas fa-sync-alt"></i> LOAD PARTICIPANTS</button>
+                <h2 style="color: #2D98C7;" id="hhide">Participants</h2>
+                <ol id="lhide">
+                {% for u in users %}
+                <li>{{ u }}</li>
+                {% endfor %}
+                </ol>
+                <script type="text/javascript">
+                    document.getElementById("hhide").style.display = 'none';
+                    document.getElementById("lhide").style.display = 'none';
+                    function part() {
+                      document.getElementById("hhide").style.display = 'block';
+                      document.getElementById("lhide").style.display = 'block';
+                      document.getElementById("button").style.display = 'none';
+                    }
+                </script>
+                {% if join == 'yes' %}
+                <center>
+                    <input type="submit" name="join" value="IN MATCH" style="background-color: #888888" class="save">
+                </center>
+                {% elif join == 'full'%}
+                <center>
+                    <input type="submit" name="join" value="MATCH FULL" style="background-color: #888888" class="save">
+                </center>
+                {% else %}
+                <form method="POST" action="{% if not detail.pay %}/detail/{{ detail.id }}/pay/{% else %}{{ detail.pay }}{% endif %}">
+                <center>
+                    {% csrf_token %}
+                    <input type="radio" name="accept" id="accept" required><b>&nbsp; I have read above Instructions Carefully</b><br><br>
+                    <input type="submit" name="join" value="JOIN" class="save">
+                    <p style="color: red">It will take us a little bit time to update so please have patience.</p>
+                </center>
+                {% endif %}
+</div><br>
+{% endblock %}

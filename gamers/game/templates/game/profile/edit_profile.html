@@ -1,0 +1,52 @@
+{% extends 'game/base.html' %}
+{% load static %}
+{% block content %}
+<center>
+<br><h1 style="color:#5FC6E9;">My Profile</h1>
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <table cellspacing="7" style="text-align: left; color: white;">
+        <tr>
+            <th style="color: #2D98C7; font-size: 18px">Edit Profile</th>
+        </tr>
+        <tr>
+            <th><input class="question" type="text" name="first_name" id="id_first_name" value="{{ user.first_name }}" maxlength="15" required><label for="firstname"><span>First Name</span></label></th>
+            <th><input class="question" type="text" name="last_name" id="id_last_name" value="{{ user.last_name }}" maxlength="15" required><label for="lastname"><span>Last Name</span></label></th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td style="width: 120px;">Gender:</td>
+                        <td style="width: 120px;"><input type="radio" name="gender" id="id_gender_0" value="MALE" {% if profile.gender == 'MALE' %}checked{% endif %}>Male</td>
+                        <td style="width: 120px;"><input type="radio" name="gender" id="id_gender_1" value="FEMALE" {% if profile.gender == 'FEMALE' %}checked{% endif %}>Female</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2"><input style="padding-top: 20px;" class="question" type="text" name="username" id="id_username" value="{{ user.username }}" required><label for="username" readonly><span style="top: -47px; font-size: 13px; color: #a6a6a6;">UserName</span></label></th>
+        </tr>
+        <tr>
+            <th><input class="question" type="text" name="phone" id="id_phone" value="{{ profile.phone }}" oninput="mobile_validate()" required><label for="id_phone"><span>Mobile Number</span></label></th>
+            <th><div style="color: red; font-size: 14px;" id="error_mobile"></div</th>
+        </tr>
+        <tr>
+            <th colspan="2"><input style="padding-top: 20px;" class="question" type="email" id="id_email" name="email" value="{{ user.email }}" required><label style="padding-top: 20px;" for="email" readonly><span style="top: -47px; font-size: 13px; color: #a6a6a6;">Email Address</span></label></th>
+        </tr>
+    </table><br>
+    <input class="save" type="submit" name="submit" onclick="validateForm()" value="Save">
+</form>
+<script type="text/javascript">
+  function mobile_validate() {
+    var m1 = document.getElementById("id_phone").value;
+    if(m1.length != 10) {
+      document.getElementById("error_mobile").innerHTML = "Invalid Mobile Number";
+    }
+    else {
+      document.getElementById("error_mobile").innerHTML = "";
+    }
+  }
+</script>
+</center>
+{% endblock %}

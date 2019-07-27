@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}PUBG{% endblock %}</title>
+    <style>
+  .navbar1 {
+    background-color: #8c8c8c;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .navbar1 a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 0px 16px;
+    text-decoration: none;
+  }
+  .button {
+      background-color: #5FC6E9;
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 30px;
+    width: 100px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+  .button:hover {
+     color: yellow;
+  }
+  .login-box
+  {
+      width:400px;
+      height:800px;
+      background-size: 400px 800px;
+      background-image: url("{% static 'img/LR.jpg' %}");
+      align-content: center;
+  }
+.login-box input[type="text"],input[type="password"],input[type="email"]
+   {
+        border:none;
+        border-bottom:1px solid #fff;
+        background:transparent;
+        outline:none;
+        height:40px;
+        color:#fff;
+      font-size:16px;
+  }
+  .horror{
+font-family: 'Nosifer',cursive;
+font-size:30px;
+text-shadow:2px 2px black;
+}
+  th{
+    width: 150px;
+  }
+        </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css' integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/' crossorigin='anonymous'>
+	</head>
+    <body style="margin: 0px;" background = "{% static 'img/bg.jpg' %}">
+        <div class="navbar1">
+            <a href="../" onmouseover="this.style.color='#2D98C7'" onmouseout="this.style.color='white'" style="float: left;"><span class="horror">BlueZon</span></a>
+            <a href="../login" style="padding: 10px; float: right;"><button style="width: 70px" class="button">LogIn</button></a>
+        </div>
+        <center>
+            <div style="margin-top: 70px; margin-bottom: 12px;">
+                <div class="login-box">
+                        <br><i style="font-size: 100px; color: #5FC6E9;" class="fa fa-user-circle"></i>
+                        <h1 style="color:#2D98C7;">Register</h1>
+                        <form enctype="multipart/form-data" method="POST">
+                          {% csrf_token %}
+                            <table cellspacing="7" style="text-align: left; font-size: 17px; color: white;">
+                                {% if error == 'error' %}
+                                <tr>
+                                  <td colspan="2" style="color: red; font-size: 15px;">A user with that username already exists.</td>
+                                </tr>{% endif %}
+                                <tr>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                </tr>
+                                <tr>
+                                    <th><input type="text" name="first_name" id="id_first_name" maxlength="15" placeholder="Enter Firstname" style="width: 130px" required></th>
+                                    <th><input type="text" name="last_name" id="id_last_name" maxlength="15" style="width: 130px" placeholder="Enter Lastname" required></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Gender:
+                                            <input type="radio" name="gender" style="width: 40px" id="id_gender_0" value="MALE" checked>Male
+                                            <input type="radio" name="gender" style="width: 40px" id="id_gender_1" value="FEMALE">Female</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">PUBG Username</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"><input type="text" name="username" id="id_username" placeholder="Enter PUBG username" required></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Paytm No. <div style="color: red; font-size: 14px;" id="error_mobile"></div></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"><input type="text" name="phone" id="id_phone" oninput="mobile_validate()" placeholder="Enter Paytm No." required></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Email</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"><input style="width: 300px" type="email" id="id_email" name="email" placeholder="Enter Email" required></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Password</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"><input type="password" name="password" id="id_password" placeholder="Enter Password" required></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Confirm Password<div style="color: red;" id="error_pass"></div></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"><input type="password" name="password_confirmation" id="password_confirmation" oninput="password_validate()" placeholder="Re-enter Password" required></th>
+                                </tr>
+                            </table><br>
+                            <input class="button" type="submit" name="submit" onclick="validateForm()" value="Register">
+                          </form>
+                    </div>
+            </div>
+        </center>
+        <script type="text/javascript">
+          function password_validate() {
+            var v1 = document.getElementById("id_password").value;
+            var v2 = document.getElementById("password_confirmation").value;
+            if(v1 != v2) {
+              document.getElementById("error_pass").innerHTML = "Password do not match";
+            }
+            else {
+              document.getElementById("error_pass").innerHTML = "";
+            }
+          }
+          function mobile_validate() {
+            var m1 = document.getElementById("id_phone").value;
+            if(m1.length != 10) {
+              document.getElementById("error_mobile").innerHTML = "Invalid Mobile Number";
+            }
+            else {
+              document.getElementById("error_mobile").innerHTML = "";
+            }
+          }
+        </script>
+	</body>
+</html>

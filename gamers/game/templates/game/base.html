@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BlueZon{% endblock %}</title>
+    <style>
+  .navbar1 {
+    background-color: #8c8c8c;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .navbar1 a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 0px 16px;
+    text-decoration: none;
+  }
+  .navbar2 {
+    background-color: #8c8c8c;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .navbar2 a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+    width: 25%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+  }
+  
+  /* Change the color of links on hover */
+  .navbar2 a:hover {
+    color: #5FC6E9;
+  }
+  
+  /* Add a color to the active/current link */
+  .navbar2 a.active {
+    color: yellow;
+  }
+  .button {
+      background-color: #5FC6E9;
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 30px;
+    width: 80px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+  .button:hover {
+     color: yellow;
+  }
+  .save {
+    background-color: #5FC6E9;
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 35px;
+    width: 300px;
+    font-size: 23px;
+    font-weight: bold;
+  }
+  .block {
+      background-color: white;
+      width: 80%;
+      padding: 20px;
+      border-radius: 12px;
+  }
+  .detail {
+      background-color: white;
+      width: 80%;
+      padding: 20px;
+      border-radius: 12px;
+  }
+  .detail button {
+    font-weight: bold;
+    padding: 5px;
+  }
+  .profile {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 6px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 12px;
+    width : 300px;
+  }
+  .profile:hover {
+    background-color: #5FC6E9;
+    color: white;
+  }
+  .horror{
+font-family: 'Nosifer',cursive;
+font-size:30px;
+text-shadow:2px 2px black;
+}
+.fa-headset:hover,.fa-home:hover,.fa-envelope:hover{
+color:#8c8c8c;
+transition:0.9s;
+transform:rotateY(360deg);
+}
+/* Question */
+
+input.question {
+  font-size: 23px;
+  font-weight: 300;
+  border-radius: 2px;
+  margin: 0;
+  border: none;
+  width: 80%;
+  background: rgba(0, 0, 0, 0);
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+  outline: 0;
+  color: white;
+}
+/* Underline and Placeholder */
+
+input.question + label {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  width: 20%;
+  border-top: 1px solid red;
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+  height: 0px;
+}
+
+input.question:focus + label {
+  width: 90%;
+}
+
+input.question:focus,
+input.question:valid {
+  padding-top: 20px;
+}
+
+input.question:focus + label > span,
+input.question:valid + label > span {
+  top: -47px;
+  font-size: 13px;
+  color: #a6a6a6;
+}
+input.question:valid + label {
+  border-color: green;
+}
+
+input.question:invalid {
+  box-shadow: none;
+}
+
+input.question + label > span {
+  font-weight: 300;
+  margin: 0;
+  position: absolute;
+  color: #8F8F8F;
+  font-size: 23px;
+  top: -26px;
+  left: 0px;
+  z-index: -1;
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+@-webkit-keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+progress[value] {
+  width: 52%;
+  height: 10px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  height: 10px;
+  width: 100%;
+}
+progress {
+  width: 52%;
+  height: 10px;
+        display: block;
+        /* turn off defaults */
+        -webkit-appearance: none;
+        border: none;
+}
+ 
+/* This rule sets the appearance of the progress bar background */
+progress::-webkit-progress-bar {
+	    width: 52%;
+        background: white;
+        border-radius: 50px;
+        padding: 2px;
+        box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2);
+}
+ 
+/* This rule sets the appearance of the progress bar meter */
+progress::-webkit-progress-value {
+	align-items: left;
+    border-radius: 50px;
+          box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);  
+    background-size: 30px 30px;
+   /* background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+                      transparent 75%, transparent);*/   
+                    
+}
+        </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css' integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/' crossorigin='anonymous'>
+	</head>
+    <body style="margin: 0px;" background = "{% static 'img/bg.jpg' %}">
+        {% include 'game/navbar.html' %}
+            <div style="margin-top: 68px; {% if not remove_nav %}margin-bottom: 52px;{% endif %}">
+            {% block content %}
+            
+            {% endblock %}
+            </div>
+	</body>
+</html>

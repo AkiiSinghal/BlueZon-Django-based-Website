@@ -1,0 +1,14 @@
+{% load static %}
+<div class="navbar1">
+    <a href="../../../../home" onmouseover="this.style.color='#2D98C7'" onmouseout="this.style.color='white'" style="float: left;"><span class="horror">BlueZon</span></a>
+    <a href="../../logout" style="padding: 10px; float: right;"><button class="button">LogOut</button></a>
+</div>
+{% if not remove_nav %}
+<div class="navbar2">
+    <a href="../earn" class="{% if nbar == 'earn' %}active{% endif %}"><i class="fa fa-rupee"></i><br>Earn</a>
+    <!--<a href="../ongoing" class="{% if nbar == 'ongoing' %}active{% endif %}"><i class='fas fa-stopwatch'></i><br>Ongoing</a>-->
+    <a href="../home" class="{% if nbar == 'home' %}active{% endif %}"><i class="fa fa-gamepad"></i><br>Play</a>
+    <a href="../result" class="{% if nbar == 'result' %}active{% endif %}"><i class="fas fa-clipboard-list"></i><br>Result</a>
+    <a href="../profile" class="{% if nbar == 'profile' %}active{% endif %}"><i class="fa fa-user-circle"></i><br>Profile</a>
+</div>
+{% endif %}

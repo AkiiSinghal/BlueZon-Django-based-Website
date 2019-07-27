@@ -1,0 +1,38 @@
+{% extends 'game/base.html' %}
+{% load static %}
+{% block content %}
+<center>
+<!--Result block starts here-->
+<div class="block">
+    <table style="border-collapse: separate; border-spacing: 5px 0;">
+        <tr>
+            <td style="padding: 2% 0;"><img src="{% static 'img/logo.png' %}" style="width: 80px; height: 80px;"></td>
+            <td style="padding: 2% 0;"><center><h2>Battle for Pride - Match #15</h2><p>Time - 10 p.m. at Feb. 16, 2019</p></center></td>
+        </tr>
+    </table>
+    <table style="text-align: center; border-collapse: separate; border-spacing: 10px 0;">
+        <tr>
+            <th style="padding: 2% 0;">WINNING PRIZE</th>
+            <th style="padding: 2% 0;">PER KILL</th>
+            <th style="padding: 2% 0;">ENTRY FEES</th>
+        </tr>
+        <tr>
+            <td style="padding: 2% 0;">Rs. 50</td>
+            <td style="padding: 2% 0;">Rs. 0</td>
+            <td style="padding: 2% 0;">Rs. 0</td>
+        </tr>
+        <tr>
+            <th style="padding: 2% 0;">TYPE</th>
+            <th style="padding: 2% 0;">VERSION</th>
+            <th style="padding: 2% 0;">MAP</th>
+        </tr>
+        <tr>
+            <td style="padding: 2% 0;">Solo</td>
+            <td style="padding: 2% 0;">TPP</td>
+            <td style="padding: 2% 0;">Erangel</td>
+        </tr>
+    </table><br>
+    <img src="{% static 'img/result1.jpg' %}" style="width: 90%">
+</div><br></center>
+
+{% endblock %}

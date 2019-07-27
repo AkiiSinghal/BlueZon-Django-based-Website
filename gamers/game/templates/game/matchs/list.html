@@ -1,0 +1,41 @@
+{% extends 'game/base.html' %}
+{% load static %}
+{% block content %}
+<center>
+{% for match in matchs %}
+<a style="text-decoration: none !important; color: inherit;" href="../detail/{{ match.id }}"><div class="block">
+    <table style="border-collapse: separate; border-spacing: 5px 0;">
+        <tr>
+            <td style="padding: 2% 0;"><img src="{% static 'img/logo.png' %}" style="width: 80px; height: 80px;"></td>
+            <td style="padding: 2% 0;"><center><h2>{{ match.name }} - Match #{{ match.id }}</h2><p>Time - {{ match.time }} at {{ match.date }}</p></center></td>
+        </tr>
+    </table>
+    <table style="text-align: center; border-collapse: separate; border-spacing: 10px 0;">
+        <tr>
+            <th style="padding: 2% 0;">WINNING PRIZE</th>
+            <th style="padding: 2% 0;">PER KILL</th>
+            <th style="padding: 2% 0;">ENTRY FEES</th>
+        </tr>
+        <tr>
+            <td style="padding: 2% 0;">Rs. {{ match.prize }}</td>
+            <td style="padding: 2% 0;">Rs. {{ match.kills }}</td>
+            <td style="padding: 2% 0;">Rs. {{ match.fees }}</td>
+        </tr>
+        <tr>
+            <th style="padding: 2% 0;">TYPE</th>
+            <th style="padding: 2% 0;">VERSION</th>
+            <th style="padding: 2% 0;">MAP</th>
+        </tr>
+        <tr>
+            <td style="padding: 2% 0;">{{ match.type }}</td>
+            <td style="padding: 2% 0;">{{ match.version }}</td>
+            <td style="padding: 2% 0;">{{ match.map}}</td>
+        </tr>
+    </table>
+    <p style="color: #2D98C7;">We need atleast 15 entries to start the match</p>
+    <progress value="{{ match.entry }}" max="100" style="text-align: left"></progress>{{ match.entry }}%
+</div></a>
+<br>
+{% endfor %}
+</center>
+{% endblock %}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BlueZon{% endblock %}</title>
+    <style>
+  .navbar1 {
+    background-color: #888888;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .navbar1 a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 0px 16px;
+    text-decoration: none;
+  }
+  .button {
+      background-color: #5FC6E9;
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 30px;
+    width: 80px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+  .button:hover {
+     color: yellow;
+  }
+  .login-box
+  {
+      width:320px;
+      height:500px;
+      background-size: 320px 500px;
+      background-image: url("{% static 'img/LR.jpg' %}");
+      align-content: center;
+  }
+.login-box input[type="text"],input[type="password"]
+   {
+        border:none;
+        border-bottom:1px solid #fff;
+        background:transparent;
+        outline:none;
+        height:40px;
+        color:#fff;
+      font-size:16px;
+  }
+  .horror{
+font-family: 'Nosifer',cursive;
+font-size:30px;
+text-shadow:2px 2px black;
+}
+        </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css' integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/' crossorigin='anonymous'>
+	</head>
+    <body style="margin: 0px;" background = "{% static 'img/bg.jpg' %}">
+        <div class="navbar1">
+         <a href="../" onmouseover="this.style.color='#2D98C7'" onmouseout="this.style.color='white'" style="float: left;"><span class="horror">BlueZon</span></a>
+            <a href="../register" style="padding: 10px; float: right;"><button class="button">SignUp</button></a>
+        </div>
+        <center>
+            <div style="margin-top: 90px;">
+                    <div class="login-box">
+                            <br><i style="font-size: 130px; color: #5FC6E9;" class="fa fa-user-circle"></i>
+                            <h1 style="color:#2D98C7;">Login</h1>
+                            <form method="post" action="{% url 'game:user_login' %}">
+                               {% csrf_token %}
+                               <table style="text-align: left; font-size: 17px; color: white;">
+                                  {% if error == 'error' %}
+                                  <tr>
+                                    <td style="color: red; font-size: 15px;">Invalid login details given</td>
+                                  </tr>{% endif %}
+                                  <tr>
+                                     <th>Username</th>
+                                  </tr>
+                                  <tr>
+                                     <td><input type="text" name="username" placeholder="Enter Username"></td>
+                                  </tr>
+                                  <tr>
+                                     <th>Password</th>
+                                  </tr>
+                                  <tr>
+                                     <td><input type="password" name="password" placeholder="Enter Password"></td>
+                                  </tr>
+                               </table><br>
+                               <input class="button" type="submit" name="submit" value="Login"><br><br>
+                               <table>
+                                  <tr>
+                                     <td style="padding-left: 150px;"><a href="../register" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'" style="color: #fff">New User?</a></td>
+                                     <!-- <td style="width: 130px"><a href="#" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'" style="color: #fff">Forgot Password</a></td>-->
+                                  </tr>
+                               </table>
+                            </form>
+                    </div>
+            </div>
+        </center>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'game/base.html' %}
+{% load static %}
+{% block content %}
+<center>
+<br><br>
+<img src="{% static 'img/m.jpg' %}" style="height: 200px; width: 200px;">
+<h2 style="color: yellow;">{{ user.first_name|add:' '|add:user.last_name }}</h2>
+<table cellspacing="10" style="background-color: white; border-radius: 12px; height: 60px; border:solid 2px #2D98C7; border-spacing: 30px 0;">
+	<tr>
+		<th align="center">Match Played</th>
+		<th align="center">Total Kills</th>
+		<th align="center">Amount Won</th>
+	</tr>
+	<tr>
+		<td align="center">{{ profile.match_played }}</td>
+		<td align="center">{{ profile.total_kills }}</td>
+		<td align="center">Rs. {{ profile.amount_won }}</td>
+	</tr>
+</table>
+<br> 
+<table>
+	<tr><td><a href="../refer"><button class="profile"><i style="color:#2D98C7;" class="fas fa-users"></i>	Refer and Earn</button></a></td></tr>
+	<tr><td><a href="/edit_profile"><button class="profile"><i style="color:#2D98C7;" class="fa fa-user-circle"></i>	My Profile</button></a></td></tr>
+	<!--<tr><td><a href="#"><button class="profile"><i style="color:#2D98C7;" class="fas fa-wallet"></i>	My Wallet</button></a></td></tr>-->
+	<tr><td><a href="../contact_us"><button class="profile"><i style="color:#2D98C7;" class="fas fa-headset"></i>     Contact us</button></a></td></tr>
+	<tr><td><a href="../logout"><button class="profile"><i style="color:#2D98C7;" class="fas fa-sign-out-alt"></i>     Logout</button></a></td></tr>
+</table>
+</center>
+{% endblock %}
