@@ -11,6 +11,9 @@ It also gives the feature of email verification of users.
 * Install Django in your system.
   - pip install Django
 
+* Enter into BlueZon folder.
+  - cd BlueZon
+
 * Make Migration by
   - python manage.py migrate
   - python manage.py makemigrations
