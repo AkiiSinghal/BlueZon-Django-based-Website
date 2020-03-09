@@ -30,12 +30,12 @@ It also gives the feature of email verification of users.
 
 * You can also open the admin potal by opening **127.0.0.1:8000/admin** and using user admin user id.
 
-* To activate email verification like features edit .[setting.py](https://github.com/AkiiSinghal/BlueZon-Django-based-Website/blob/master/BlueZon/gamers/settings.py)
+* To activate email verification like features edit [setting.py](https://github.com/AkiiSinghal/BlueZon-Django-based-Website/blob/master/BlueZon/gamers/settings.py)
   - Change the email id and password in 129 and 130 line respectively.
   
 ## Hosting
 To host this website on the platform like AWS refer to the below link
-* .[AWS Hosting](https://youtu.be/OLS0XD6oINA)
+* [AWS Hosting](https://youtu.be/OLS0XD6oINA)
 
 ## ScreenShots
 ![Screenshot (37)](https://user-images.githubusercontent.com/42001728/61988375-fe73b400-b03d-11e9-8f9c-fa821717245b.png)
