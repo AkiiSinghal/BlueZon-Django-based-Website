@@ -1,7 +1,7 @@
 # BlueZon-Django-based-Website
 It is PUBG Tournament website which paid matches are organised with prize money.
 
-It is a Django based website with with full features of admin login for managing the site database and updates.
+It is a Django based website with full features of admin login for managing the site database and updates.
 
 It also gives the feature of email verification of users.
 
